@@ -1,4 +1,4 @@
-# LLM_entropy
+# trt_LLM_decoder
 
 **Table Of Contents**
 
@@ -10,6 +10,7 @@
 ## Description
 
 This repository is the halfway tensorRT API implementation of the LLaMA decoder.
+The purpose of this project is trying to leverage nvidia TensorRT to generate a platform optimized LLaMA implementation.
 The work is paused because of the release of [NVIDIA/TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM), a more thorough reimplementation of LLMs.
 In TensorRT-LLM, nvidia ported FasterTransformer to TensorRT plugins, resulting a slightly easier reconstruction for users.
 
@@ -29,5 +30,12 @@ In TensorRT-LLM, nvidia ported FasterTransformer to TensorRT plugins, resulting 
 
 ## Running the sample
 
-All implemented components can be found in the `trt_dev` directory, and most of them can directly run with Jupyter Notebook.
+All implemented decoder components can be found in the `trt_dev` directory, and most of them can directly run with Jupyter Notebook.
+The structure of notebooks is
+
+1. A torch implementation from huggingface as the baseline implementation
+2. An tensorRT implementation of the same component
+3. Validating the result of both is still in a reasonable error range (typically, within ~1e-4)
+4. (Only part of notebooks) A performance comparison
+
 For ` .py` in the directory, those are the halfway implementation of library components.
