@@ -28,7 +28,7 @@ In TensorRT-LLM, nvidia ported FasterTransformer to TensorRT plugins, resulting 
     pip3 install transformers
     ```
 2. Some experiments use the model weight from [baffo32/decapoda-research-llama-7B-hf](https://huggingface.co/baffo32/decapoda-research-llama-7B-hf/tree/main).
-    Please download `pytorch_model-00001-of-00033.bin` and store it in `weights`
+    Please download `pytorch_model-00001-of-00033.bin` and store it in `trt_dev/weights`
 
 
 ## Running the sample
