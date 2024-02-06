@@ -17,7 +17,7 @@ def test_trt(nIn, cIn, hIn, wIn, cOut, raw_data, weight, bias):
 
     # dynamic shape optimization
     profile = builder.create_optimization_profile();
-    profile.set_shape("inputT0", (nIn, cIn, hIn, 3), (nIn, cIn, hIn, 4), (nIn, cIn, hIn, 5)) 
+    profile.set_shape("inputT0", (nIn, cIn, hIn, 3), (nIn, cIn, hIn, 4), (nIn, cIn, hIn, 5))
     config.add_optimization_profile(profile)
 
     # add fully connected layer
@@ -101,7 +101,7 @@ if __name__ == "__main__":
 
     # fully connected bias
     bias = np.zeros(cOut, dtype=np.float32)
-    
+
     test_trt(nIn, cIn, hIn, wIn, cOut, data, weight, bias)
 
     print(test_torch(nIn, cIn, hIn, wIn, cOut, data, weight, bias))

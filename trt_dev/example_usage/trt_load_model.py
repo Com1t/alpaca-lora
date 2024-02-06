@@ -18,7 +18,7 @@ class SiLUActivation(nn.Module):
 
     def forward(self, input: Tensor) -> Tensor:
         return nn.functional.silu(input)
-    
+
     def b_forward(self, input: Tensor) -> Tensor:
         return input * nn.functional.sigmoid(input)
 
@@ -122,7 +122,7 @@ class LlamaMLP(nn.Module):
         self.context = self.engine.create_execution_context()
 
         print("Completed creating Engine")
-        with open("trt_mlp.trt", "wb") as f:
+        with open("./weights/trt_mlp.trt", "wb") as f:
             f.write(self.engine.serialize())
 
     def trt_load(self, dir):
@@ -138,7 +138,7 @@ if __name__ == "__main__":
 
     model = LlamaMLP(config)
 
-    model.load("/home/fuchiang137/.cache/huggingface/hub/models--decapoda-research--llama-7b-hf/snapshots/5f98eefcc80e437ef68d457ad7bf167c2c6a1348/pytorch_model-00018-of-00033.bin")
+    model.load("./weights/pytorch_model-00001-of-00033.bin")
 
     batch_size, seq_len, hidden_size = 4, 1, 4096
     data = torch.ones(batch_size, seq_len, hidden_size)
@@ -148,7 +148,8 @@ if __name__ == "__main__":
 
     # choose one of the following: export or trt_load
     model.trt_export()
-    # model.trt_load("/home/fuchiang137/LLM_infer/trt_LLM/alpaca-lora/trt_dev/trt_weight/trt_mlp.trt")
+    # model.trt_load("./weights/trt_mlp.trt")
+
     output_trt = model.trt_forward(data)
     output_trt = output_trt.reshape(output.shape)
     print("output trt :", output_trt.shape)
