@@ -42,3 +42,8 @@ The structure of notebooks is
 4. (Only part of notebooks) A performance comparison
 
 For ` .py` in the directory, those are the halfway implementation of library components.
+
+
+## Review
+This following document, exclusive to Skymizer members, records the review and the outcomes of the project.
+https://docs.google.com/spreadsheets/d/1zu7uDjAAZLwfa6HuiQllMg5n8JYsg77gRZJLjOMF9aE/edit?usp=sharing
